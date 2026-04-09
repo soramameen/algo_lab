@@ -1,0 +1,37 @@
+flowchart TD
+    subgraph Divide["⬇ Divide"]
+        A["[8,7,9,10,5,12,2,3]"]:::card --> B["[8,7,9,10]"]:::card
+        A --> C["[5,12,2,3]"]:::card
+        B --> D["[8,7]"]:::card
+        B --> E["[9,10]"]:::card
+        C --> F["[5,12]"]:::card
+        C --> G["[2,3]"]:::card
+        D --> H["[8]"]:::card
+        D --> I["[7]"]:::card
+        E --> J["[9]"]:::card
+        E --> K["[10]"]:::card
+        F --> L["[5]"]:::card
+        F --> M["[12]"]:::card
+        G --> N["[2]"]:::card
+        G --> O["[3]"]:::card
+    end
+
+    subgraph Merge["⬆ Merge"]
+        H -.-> M1["[7,8]"]:::merge
+        I -.-> M1
+        J -.-> M2["[9,10]"]:::merge
+        K -.-> M2
+        L -.-> M3["[5,12]"]:::merge
+        M -.-> M3
+        N -.-> M4["[2,3]"]:::merge
+        O -.-> M4
+        M1 -.-> M5["[7,8,9,10]"]:::merge
+        M2 -.-> M5
+        M3 -.-> M6["[2,3,5,12]"]:::merge
+        M4 -.-> M6
+        M5 -.-> M7["[2,3,5,7,8,9,10,12]"]:::merge
+        M6 -.-> M7
+    end
+
+    classDef card fill:#ffffff,stroke:#d0d7de,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef merge fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#24292f,rx:10,ry:10

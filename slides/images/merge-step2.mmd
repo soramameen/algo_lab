@@ -1,0 +1,9 @@
+flowchart TD
+    M1["[7, 8]"]:::merge --> M5["[7, 8, 9, 10]"]:::merge
+    M2["[9, 10]"]:::merge --> M5
+
+    M3["[5, 12]"]:::merge --> M6["[2, 3, 5, 12]"]:::merge
+    M4["[2, 3]"]:::merge --> M6
+
+    classDef card fill:#ffffff,stroke:#d0d7de,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef merge fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#24292f,rx:10,ry:10
