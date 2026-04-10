@@ -1,0 +1,14 @@
+%% ID: C3-02
+%% Growth rate comparison: 1, lg n, sqrt(n), n, n lg n, n^2, 2^n
+%% Uses xychart-beta with n = 1..8 (capped at 300 to avoid clipping)
+xychart-beta
+    title "Growth Rate Comparison (n = 1..8, capped at 300)"
+    x-axis "n" [1, 2, 3, 4, 5, 6, 7, 8]
+    y-axis "f(n)" 0 --> 300
+    line "1" [1, 1, 1, 1, 1, 1, 1, 1]
+    line "lg n" [0, 1, 1.58, 2, 2.32, 2.58, 2.81, 3]
+    line "√n" [1, 1.41, 1.73, 2, 2.24, 2.45, 2.65, 2.83]
+    line "n" [1, 2, 3, 4, 5, 6, 7, 8]
+    line "n lg n" [0, 2, 4.75, 8, 11.61, 15.51, 19.65, 24]
+    line "n²" [1, 4, 9, 16, 25, 36, 49, 64]
+    line "2ⁿ" [2, 4, 8, 16, 32, 64, 128, 256]

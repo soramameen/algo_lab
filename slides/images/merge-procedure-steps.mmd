@@ -1,0 +1,36 @@
+%% ID: S23-02
+flowchart TD
+    subgraph Init["Setup (CLRS sentinel version)"]
+        direction TD
+        I0["L = [2, 4, 5, 7, INF]\nR = [1, 2, 3, 6, INF]\nA[9..16] = [_, _, _, _, _, _, _, _]\ni = 1, j = 1"]:::card
+    end
+
+    subgraph Trace1["Steps 1-4"]
+        direction TD
+        S1["k = 9\n2 vs 1 -> take R[j]\nA = [1, _, _, _, _, _, _, _]\nj moves to 2"]:::merge
+        S2["k = 10\n2 vs 2 -> take L[i] (<=)\nA = [1, 2, _, _, _, _, _, _]\ni moves to 2"]:::merge
+        S3["k = 11\n4 vs 2 -> take R[j]\nA = [1, 2, 2, _, _, _, _, _]\nj moves to 3"]:::merge
+        S4["k = 12\n4 vs 3 -> take R[j]\nA = [1, 2, 2, 3, _, _, _, _]\nj moves to 4"]:::merge
+    end
+
+    subgraph Trace2["Steps 5-8"]
+        direction TD
+        S5["k = 13\n4 vs 6 -> take L[i]\nA = [1, 2, 2, 3, 4, _, _, _]\ni moves to 3"]:::merge
+        S6["k = 14\n5 vs 6 -> take L[i]\nA = [1, 2, 2, 3, 4, 5, _, _]\ni moves to 4"]:::merge
+        S7["k = 15\n7 vs 6 -> take R[j]\nA = [1, 2, 2, 3, 4, 5, 6, _]\nj moves to 5"]:::merge
+        S8["k = 16\n7 vs INF -> take L[i]\nA = [1, 2, 2, 3, 4, 5, 6, 7]\ni moves to 5"]:::merge
+    end
+
+    subgraph Sentinel["Sentinel idea"]
+        direction TD
+        N1["INF marks the end of each helper array"]:::conquer
+        N2["Once either side exposes INF, the remaining values come from the other side"]:::conquer
+        N3["No separate empty-array check is needed inside the loop"]:::conquer
+    end
+
+    I0 --> S1 --> S2 --> S3 --> S4 --> S5 --> S6 --> S7 --> S8
+    S8 --> N1 --> N2 --> N3
+
+    classDef card fill:#ffffff,stroke:#d0d7de,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef conquer fill:#e3f2fd,stroke:#90caf9,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef merge fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#24292f,rx:10,ry:10

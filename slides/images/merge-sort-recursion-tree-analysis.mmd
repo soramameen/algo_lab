@@ -1,0 +1,52 @@
+%% ID: S23-03
+flowchart LR
+    subgraph Tree["Recursion tree for T(n) = 2T(n/2) + cn"]
+        direction TD
+        R["T(n)\nlocal cost: cn"]:::merge
+        A["T(n/2)\nlocal cost: c(n/2)"]:::card
+        B["T(n/2)\nlocal cost: c(n/2)"]:::card
+        C["T(n/4)\nlocal cost: c(n/4)"]:::card
+        D["T(n/4)\nlocal cost: c(n/4)"]:::card
+        E["T(n/4)\nlocal cost: c(n/4)"]:::card
+        F["T(n/4)\nlocal cost: c(n/4)"]:::card
+        G1["..."]:::note
+        G2["..."]:::note
+        H["n leaves\nlocal cost: c"]:::conquer
+
+        R --> A
+        R --> B
+        A --> C
+        A --> D
+        B --> E
+        B --> F
+        C --> G1
+        D --> G1
+        E --> G2
+        F --> G2
+        G1 --> H
+        G2 --> H
+    end
+
+    subgraph Cost["Cost by level"]
+        direction TD
+        L0["Level 0\n1 x cn = cn"]:::badge
+        L1["Level 1\n2 x c(n/2) = cn"]:::badge
+        L2["Level 2\n4 x c(n/4) = cn"]:::badge
+        Lh["Level i\n2^i x c(n/2^i) = cn"]:::badge
+        Lb["Bottom level\nn x c = cn"]:::badge
+        Ans["(log2 n + 1) levels\neach level costs cn\ntotal = cn log2 n + cn\n= Theta(n log n)"]:::merge
+
+        L0 --> L1 --> L2 --> Lh --> Lb --> Ans
+    end
+
+    R -.-> L0
+    A -.-> L1
+    C -.-> L2
+    G1 -.-> Lh
+    H -.-> Lb
+
+    classDef card fill:#ffffff,stroke:#d0d7de,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef conquer fill:#e3f2fd,stroke:#90caf9,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef merge fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef badge fill:#f3e5f5,stroke:#9c27b0,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef note fill:#ffffff,stroke:#bdbdbd,stroke-dasharray: 4 3,stroke-width:1.5px,color:#24292f,rx:10,ry:10

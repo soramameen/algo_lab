@@ -1,0 +1,13 @@
+%% ID: C3-04
+%% Polynomial vs Exponential vs Logarithmic growth comparison
+%% n^b = o(a^n) and lg^b n = o(n^a) from Section 3.2
+xychart-beta
+    title "Polynomial vs Exponential vs Logarithmic Growth"
+    x-axis "n" [2, 4, 6, 8, 10, 12, 14, 16]
+    y-axis "f(n)" 0 --> 70000
+    line "lg n" [1, 2, 2.58, 3, 3.32, 3.58, 3.81, 4]
+    line "lg² n" [1, 4, 6.66, 9, 11.02, 12.82, 14.53, 16]
+    line "n" [2, 4, 6, 8, 10, 12, 14, 16]
+    line "n²" [4, 16, 36, 64, 100, 144, 196, 256]
+    line "n³" [8, 64, 216, 512, 1000, 1728, 2744, 4096]
+    line "2ⁿ" [4, 16, 64, 256, 1024, 4096, 16384, 65536]

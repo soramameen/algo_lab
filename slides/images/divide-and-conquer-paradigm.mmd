@@ -1,0 +1,16 @@
+%% ID: S23-01
+flowchart LR
+    P["Original problem"]:::card --> D1["Divide"]:::card
+    D1 --> D2["Subproblem A\nsize n/2"]:::card
+    D1 --> D3["Subproblem B\nsize n/2"]:::card
+
+    D2 --> C1["Conquer\nsolve recursively"]:::conquer
+    D3 --> C2["Conquer\nsolve recursively"]:::conquer
+
+    C1 --> M["Combine\ncombine partial solutions"]:::merge
+    C2 --> M
+    M --> S["Final solution"]:::merge
+
+    classDef card fill:#ffffff,stroke:#d0d7de,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef conquer fill:#e3f2fd,stroke:#90caf9,stroke-width:1.5px,color:#24292f,rx:10,ry:10
+    classDef merge fill:#e8f5e9,stroke:#4caf50,stroke-width:1.5px,color:#24292f,rx:10,ry:10
