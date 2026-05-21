@@ -1,3 +1,8 @@
+---
+marp: true
+paginate: true
+---
+
 # Growth of Functions（関数の増加度）
 
 ---
@@ -456,6 +461,12 @@ g(n) = n^(1 + sin(n))
 ![関数クラスの増加度比較（n = 1..8 の範囲、有限区間の概念図）](images/growth-rate-comparison.svg)
 
 > 図: images/growth-rate-comparison.svg — 有限範囲 n = 1..8 の値比較。n³ は n = 7 で 343 に達するため図から省略。真の漸近的関係は O(1) ⊂ O(log n) ⊂ ... ⊂ O(n³) ⊂ O(2ⁿ) を参照のこと。
+
+特に「多項式 vs 指数」の差は漸近解析で最も強調すべき点の一つである。下図は nᵏ と 2ⁿ の交差を拡大したもので、多項式がどのくらい急激に指数に追い越されるかを補強する。
+
+![多項式と指数関数の増加度比較（nᵏ と 2ⁿ の交差を強調）](images/polynomial-exponential-comparison.svg)
+
+> 図: images/polynomial-exponential-comparison.svg — nᵏ（多項式）と 2ⁿ（指数）の増加を比較。n が大きくなると指数が多項式を圧倒することを視覚的に確認できる。C3-02 の全体像を補強する図。
 
 ```
 O(1) ⊂ O(log n) ⊂ O(√n) ⊂ O(n) ⊂ O(n log n) ⊂ O(n²) ⊂ O(n³) ⊂ O(2ⁿ) ⊂ O(n!)

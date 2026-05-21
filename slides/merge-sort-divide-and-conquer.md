@@ -1,3 +1,8 @@
+---
+marp: true
+paginate: true
+---
+
 # Merge Sort と分割統治法
 
 ---
